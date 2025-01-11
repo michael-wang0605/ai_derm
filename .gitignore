@@ -1,4 +1,8 @@
 # Byte-compiled / optimized / DLL files
+archive/
+dataset_categorized_final_split/
+.vscode/
+
 __pycache__/
 *.py[cod]
 *$py.class
