@@ -1,52 +1,47 @@
 import os
-from tensorflow import keras
-from keras._tf_keras.keras.preprocessing.image import ImageDataGenerator
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader, WeightedRandomSampler
+from collections import Counter
+import torch
 
-# Path to your dataset
-data_dir = r"C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split"
-train_dir = os.path.join(data_dir, "train")
-test_dir = os.path.join(data_dir, "test")
+def get_dataloaders(data_dir, batch_size=32):
+    # Define data transformations
+    train_transform = transforms.Compose([
+        transforms.RandomResizedCrop(224),
+        transforms.RandomHorizontalFlip(),
+        transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
+        transforms.RandomRotation(15),
+        transforms.RandomVerticalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
 
-# Preprocessing for Training and Validation Data
-train_datagen = ImageDataGenerator(
-    rescale=1./255,
-    validation_split=0.2,  # Split training into training and validation subsets
-    rotation_range=20,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    shear_range=0.2,
-    zoom_range=0.2,
-    horizontal_flip=True,
-    fill_mode='nearest'
-)
+    test_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
 
-train_generator = train_datagen.flow_from_directory(
-    train_dir,
-    target_size=(224, 224),
-    batch_size=32,
-    class_mode='categorical',
-    subset='training'
-)
+    # Define datasets
+    train_dir = os.path.join(data_dir, "train")
+    test_dir = os.path.join(data_dir, "test")
+    train_dataset = datasets.ImageFolder(train_dir, transform=train_transform)
+    test_dataset = datasets.ImageFolder(test_dir, transform=test_transform)
 
-validation_generator = train_datagen.flow_from_directory(
-    train_dir,
-    target_size=(224, 224),
-    batch_size=32,
-    class_mode='categorical',
-    subset='validation'
-)
+    # Calculate sample weights for training
+    class_counts = Counter(train_dataset.targets)
+    sample_weights = [1.0 / (class_counts[label] ** 0.5) for label in train_dataset.targets]
+    sample_weights = torch.tensor(sample_weights, dtype=torch.float)
 
-# Preprocessing for Testing Data
-test_datagen = ImageDataGenerator(rescale=1./255)
+    # Create sampler
+    sampler = WeightedRandomSampler(
+        weights=sample_weights,
+        num_samples=len(sample_weights),
+        replacement=True
+    )
 
-test_generator = test_datagen.flow_from_directory(
-    test_dir,
-    target_size=(224, 224),
-    batch_size=32,
-    class_mode='categorical',
-    shuffle=False
-)
+    # Create DataLoaders
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=4)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 
-# Verify Class Mapping
-class_indices = train_generator.class_indices
-print("Class Mapping:", class_indices)
+    return train_loader, test_loader, train_dataset.classes
