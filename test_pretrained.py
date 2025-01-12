@@ -1,9 +1,11 @@
 import torch
 from torch import nn, optim
 from torchvision import models, transforms
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, WeightedRandomSampler
 from torchvision.datasets import ImageFolder
 from sklearn.metrics import classification_report
+from sklearn.utils.class_weight import compute_class_weight
+import numpy as np
 import os
 from torch.cuda.amp import autocast, GradScaler  # Import for mixed precision training
 
@@ -116,7 +118,7 @@ if __name__ == '__main__':
     model.fc = nn.Sequential(
         nn.Linear(model.fc.in_features, 512),
         nn.ReLU(),
-        nn.Dropout(0.5),
+        nn.Dropout(0.6),
         nn.Linear(512, num_classes)
     )
     model = model.to(device)
@@ -125,6 +127,8 @@ if __name__ == '__main__':
     train_transform = transforms.Compose([
         transforms.RandomResizedCrop(224),
         transforms.RandomHorizontalFlip(),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
+        transforms.RandomRotation(20),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
@@ -138,15 +142,36 @@ if __name__ == '__main__':
     train_dataset = ImageFolder(train_dir, transform=train_transform)
     test_dataset = ImageFolder(test_dir, transform=test_transform)
 
-    # DataLoaders
-    train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, num_workers=4, pin_memory=True)
-    test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, num_workers=4, pin_memory=True)
+    # Compute class weights for weighted loss
+    class_weights = compute_class_weight(
+        class_weight='balanced',
+        classes=np.arange(num_classes),
+        y=train_dataset.targets
+    )
+    class_weights = torch.tensor(class_weights, dtype=torch.float).to(device)
 
+    # Define the loss function with weights
+    criterion = nn.CrossEntropyLoss(weight=class_weights)
 
-    # Optimizer and loss
-    optimizer = optim.AdamW(model.parameters(), lr=1e-4)
-    criterion = nn.CrossEntropyLoss()
+    # Compute sample weights for WeightedRandomSampler
+    class_sample_counts = [train_dataset.targets.count(i) for i in range(num_classes)]
+    class_weights = 1.0 / torch.tensor(class_sample_counts, dtype=torch.float)
+    sample_weights = [class_weights[label] for label in train_dataset.targets]
+
+    # Create a sampler for the DataLoader
+    sampler = WeightedRandomSampler(weights=sample_weights, num_samples=len(sample_weights), replacement=True)
+
+    # DataLoaders with sampler
+    train_loader = DataLoader(train_dataset, batch_size=64, sampler=sampler, num_workers=6, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, num_workers=6, pin_memory=True)
+
+    # Optimizer
+    optimizer = optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-4)
 
     # Train and evaluate
-    train_model(model, train_loader, test_loader, criterion, optimizer, device, epochs=10)
+    train_model(model, train_loader, test_loader, criterion, optimizer, device, epochs=30)
     final_evaluation(model, test_loader, device, test_dataset.classes)
+
+    torch.save(model.state_dict(), "resnet50_dermnet.pth")
+    print("Model saved as 'resnet50_dermnet.pth'")
+
