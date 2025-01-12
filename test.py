@@ -1,14 +1,12 @@
-from collections import Counter
-from preprocessing import get_dataloaders
+from torchvision.datasets import ImageFolder
 
-# Path to your dataset
-data_dir = r"C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split"
+# Path to your training dataset
+train_dir = "C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split\\train"
+train_dataset = ImageFolder(train_dir)
 
-# Create DataLoaders
-train_loader, test_loader, classes = get_dataloaders(data_dir)
+# Save class names
+with open("class_names.txt", "w") as f:
+    for class_name in train_dataset.classes:
+        f.write(f"{class_name}\n")
 
-# Analyze class distribution
-class_counts = Counter(train_loader.dataset.targets)
-print("Class Distribution:")
-for class_idx, count in class_counts.items():
-    print(f"Class {class_idx} ({train_loader.dataset.classes[class_idx]}): {count} samples")
+print("Class names saved to class_names.txt")
