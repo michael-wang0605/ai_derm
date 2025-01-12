@@ -1,28 +1,31 @@
-import os
-from PIL import Image
+import matplotlib.pyplot as plt
+import torchvision
+from preprocessing import get_dataloaders
+import torch
 
-# Path to your dataset
-data_dir = r"C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split"
-train_dir = os.path.join(data_dir, "train")
-test_dir = os.path.join(data_dir, "test")
+def visualize_samples(loader, classes):
+    # Get one batch of data
+    data_iter = iter(loader)
+    images, labels = next(data_iter)
 
-def rewrite_images(directory):
-    for root, _, files in os.walk(directory):
-        for file in files:
-            file_path = os.path.join(root, file)
-            try:
-                # Open the image and save it back to clean up any issues
-                with Image.open(file_path) as img:
-                    img = img.convert('RGB')  # Ensure the image is in RGB format
-                    img.save(file_path, format='JPEG')  # Rewrite the image
-            except Exception as e:
-                print(f"Failed to process {file_path}: {e}")
+    # Create a grid of images
+    img_grid = torchvision.utils.make_grid(images[:8], nrow=4)  # Show 8 samples
+    img_grid = img_grid.permute(1, 2, 0)  # Rearrange dimensions for matplotlib
 
-# Rewrite images in training and testing directories
-print("Rewriting training images...")
-rewrite_images(train_dir)
+    # Normalize the image grid back to [0, 1]
+    mean = torch.tensor([0.485, 0.456, 0.406])
+    std = torch.tensor([0.229, 0.224, 0.225])
+    img_grid = img_grid * std + mean
+    img_grid = img_grid.clamp(0, 1)  # Clamp values to valid range
 
-print("Rewriting testing images...")
-rewrite_images(test_dir)
+    # Plot
+    plt.figure(figsize=(12, 8))
+    plt.imshow(img_grid)
+    plt.title("Sample Images")
+    plt.axis("off")
+    plt.show()
 
-print("All images have been rewritten successfully.")
+if __name__ == "__main__":
+    data_dir = r"C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split"
+    train_loader, _, classes = get_dataloaders(data_dir)
+    visualize_samples(train_loader, classes)
