@@ -33,9 +33,8 @@ def evaluate_model(model, test_loader, criterion, device):
     val_acc = correct / total
     return val_loss, val_acc
 
-def train_model(model, train_loader, test_loader, criterion, optimizer, scheduler, device, epochs=10, patience=3):
+def train_model(model, train_loader, test_loader, criterion, optimizer, scheduler, device, epochs=10):
     best_val_loss = float('inf')
-    patience_counter = 0
 
     for epoch in range(epochs):
         model.train()
@@ -77,14 +76,8 @@ def train_model(model, train_loader, test_loader, criterion, optimizer, schedule
 
         if val_loss < best_val_loss:
             best_val_loss = val_loss
-            patience_counter = 0
             torch.save(model.state_dict(), "best_model.pth")
             print("Best model saved!")
-        else:
-            patience_counter += 1
-            if patience_counter >= patience:
-                print("Early stopping triggered.")
-                break
 
 if __name__ == '__main__':
     data_dir = r"C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split"
@@ -143,7 +136,6 @@ if __name__ == '__main__':
     # Optimizer and Scheduler
     optimizer = optim.AdamW(model.parameters(), lr=1e-4, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=2, factor=0.5, verbose=True)
-
 
     # DataLoaders
     train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, num_workers=6, pin_memory=True)
