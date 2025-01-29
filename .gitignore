@@ -2,6 +2,10 @@
 archive/
 dataset_categorized_final_split/
 .vscode/
+organize_newData/
+organized_dataset/
+merged_dataset/
+final_dataset/
 
 __pycache__/
 *.py[cod]
