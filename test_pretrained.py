@@ -91,13 +91,14 @@ if __name__ == '__main__':
     # Load ConvNeXt-Tiny model
     from torchvision.models import convnext_tiny, ConvNeXt_Tiny_Weights
     model = convnext_tiny(weights=ConvNeXt_Tiny_Weights.IMAGENET1K_V1)
+    # Update the model with increased dropout rates
     model.classifier[2] = nn.Sequential(
         nn.Linear(model.classifier[2].in_features, 1024),
         nn.ReLU(),
-        nn.Dropout(0.5),  # Reduced dropout
+        nn.Dropout(0.6),  # Increased dropout
         nn.Linear(1024, 512),
         nn.ReLU(),
-        nn.Dropout(0.5),  # Reduced dropout
+        nn.Dropout(0.6),  # Increased dropout
         nn.Linear(512, len(os.listdir(train_dir)))
     )
 
@@ -107,6 +108,9 @@ if __name__ == '__main__':
     train_transform = transforms.Compose([
         transforms.RandomResizedCrop(224),
         transforms.RandomHorizontalFlip(),
+        transforms.RandomVerticalFlip(p=0.2),  # Added random vertical flip
+        transforms.RandomRotation(15),  # Added random rotation
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),  # Added color jitter
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
