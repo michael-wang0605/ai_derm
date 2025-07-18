@@ -1,6 +1,6 @@
 import torch
 from torch import nn, optim
-from torchvision import models, transforms
+from torchvision import transforms
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 from sklearn.utils.class_weight import compute_class_weight
@@ -9,6 +9,7 @@ import os
 from torch.cuda.amp import autocast, GradScaler
 from torchvision.transforms import RandAugment
 from tqdm import tqdm  # For progress bars
+import timm  # For BioViT
 
 # Initialize Gradient Scaler for Mixed Precision
 scaler = GradScaler()
@@ -33,7 +34,7 @@ def evaluate_model(model, test_loader, criterion, device):
     val_acc = correct / total
     return val_loss, val_acc
 
-def train_model(model, train_loader, test_loader, criterion, optimizer, scheduler, device, epochs=10):
+def train_model(model, train_loader, test_loader, criterion, optimizer, scheduler, device, epochs=50):
     best_val_loss = float('inf')
 
     for epoch in range(epochs):
@@ -88,29 +89,27 @@ if __name__ == '__main__':
     if device.type == "cuda":
         print(f"CUDA is selected. Using GPU: {torch.cuda.get_device_name(0)}")
 
-    # Load ConvNeXt-Tiny model
-    from torchvision.models import convnext_tiny, ConvNeXt_Tiny_Weights
-    model = convnext_tiny(weights=ConvNeXt_Tiny_Weights.IMAGENET1K_V1)
-    # Update the model with increased dropout rates
-    model.classifier[2] = nn.Sequential(
-        nn.Linear(model.classifier[2].in_features, 1024),
+    # Load BioViT model via timm
+    num_classes = len(os.listdir(train_dir))
+    model = timm.create_model('vit_base_patch16_224.augreg_in21k_ft_in1k', pretrained=True)
+    model.head = nn.Sequential(
+        nn.Linear(model.head.in_features, 1024),
         nn.ReLU(),
-        nn.Dropout(0.6),  # Increased dropout
+        nn.Dropout(0.6),
         nn.Linear(1024, 512),
         nn.ReLU(),
-        nn.Dropout(0.6),  # Increased dropout
-        nn.Linear(512, len(os.listdir(train_dir)))
+        nn.Dropout(0.6),
+        nn.Linear(512, num_classes)
     )
-
     model = model.to(device)
 
     # Define transforms
     train_transform = transforms.Compose([
         transforms.RandomResizedCrop(224),
         transforms.RandomHorizontalFlip(),
-        transforms.RandomVerticalFlip(p=0.2),  # Added random vertical flip
-        transforms.RandomRotation(15),  # Added random rotation
-        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),  # Added color jitter
+        transforms.RandomVerticalFlip(p=0.2),
+        transforms.RandomRotation(15),
+        transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])

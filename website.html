@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDERM AI - Transforming Dermatological Care</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom gradient animation inspired by Scale AI */
+    .gradient-bg {
+      background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+      background-size: 400%;
+      animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 bg-gray-50">
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center gradient-bg text-white">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+        Transforming Dermatological Care with AI
+      </h1>
+      <p class="text-lg sm:text-xl lg:text-2xl mb-8">
+        SDERM AI uses computer vision to detect skin conditions with clinical-level accuracy in seconds.
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="#demo" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+          Try the Demo
+        </a>
+        <a href="#whitepaper" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition">
+          Read the Research
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Demo Section -->
+  <section id="demo" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-8">Experience the Power of SDERM</h2>
+      <div class="bg-gray-100 p-8 rounded-lg shadow-lg max-w-lg mx-auto">
+        <label for="image-upload" class="block mb-4 text-lg font-semibold">Upload a Skin Photo</label>
+        <input id="image-upload" type="file" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-600 file:text-white file:hover:bg-blue-700 cursor-pointer">
+        <div id="result" class="mt-6 hidden">
+          <h3 class="text-xl font-semibold">Diagnosis</h3>
+          <p><strong>Condition:</strong> <span id="condition">Acne Vulgaris</span></p>
+          <p><strong>Severity:</strong> <span id="severity">Moderate</span></p>
+          <p><strong>Treatment:</strong> <span id="treatment">Topical retinoids, benzoyl peroxide</span></p>
+          <p class="text-red-600"><strong>Warning:</strong> <span id="warning">Avoid combining with oral isotretinoin</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">How It Works</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="text-4xl mb-4">📸</div>
+          <h3 class="text-xl font-semibold mb-2">Upload</h3>
+          <p>Upload a skin photo using our secure platform.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">🤖</div>
+          <h3 class="text-xl font-semibold mb-2">Analyze</h3>
+          <p>Our AI analyzes the image using a ConvNeXt-Tiny model.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="text-xl font-semibold mb-2">Get Results</h3>
+          <p>Instant diagnosis with treatment suggestions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">Why SDERM AI?</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-semibold mb-2">95%+ Accuracy</h3>
+          <p>Proven accuracy on dermatology datasets.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-semibold mb-2">Real-time Analysis</h3>
+          <p>Results delivered in seconds.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">⚠️</div>
+          <h3 class="text-xl font-semibold mb-2">Drug Interaction Warnings</h3>
+          <p>Stay safe with medication alerts.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">🔬</div>
+          <h3 class="text-xl font-semibold mb-2">Backed by Research</h3>
+          <p>Developed with Emory University.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="text-xl font-semibold mb-2">Easy to Use & Private</h3>
+          <p>HIPAA-ready for your peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-8">Grounded in Research</h2>
+      <p class="text-lg mb-4">Built by researchers from Emory University and more.</p>
+      <p class="text-lg mb-8">Tested on thousands of real dermatology images.</p>
+      <a href="#whitepaper" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition">
+        Download Whitepaper
+      </a>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">About SDERM AI</h2>
+      <p class="text-lg text-center mb-8">
+        Founded in 2024, SDERM AI is on a mission to revolutionize dermatological care through cutting-edge AI. Our team of researchers and engineers from Emory University is dedicated to making skin condition diagnosis accessible, accurate, and fast.
+      </p>
+      <div class="text-center">
+        <p class="text-lg">Led by Dr. Jane Doe and Dr. John Smith, we combine expertise in dermatology and AI to deliver clinical-grade solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact + CTA Footer -->
+  <footer id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+          <p>Email: <a href="mailto:info@sdermai.com" class="underline">info@sdermai.com</a></p>
+          <div class="mt-4 flex gap-4">
+            <a href="#" class="hover:text-blue-400">LinkedIn</a>
+            <a href="#" class="hover:text-blue-400">GitHub</a>
+          </div>
+        </div>
+        <div class="text-center sm:text-right">
+          <h3 class="text-xl font-semibold mb-4">Legal</h3>
+          <p><a href="#" class="underline">Privacy Policy</a></p>
+          <p class="mt-2">© 2025 SDERM AI. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mock image upload handling
+    document.getElementById('image-upload').addEventListener('change', function() {
+      const resultDiv = document.getElementById('result');
+      resultDiv.classList.remove('hidden');
+      // Mock data for demonstration
+      document.getElementById('condition').textContent = 'Acne Vulgaris';
+      document.getElementById('severity').textContent = 'Moderate';
+      document.getElementById('treatment').textContent = 'Topical retinoids, benzoyl peroxide';
+      document.getElementById('warning').textContent = 'Avoid combining with oral isotretinoin';
+    });
+  </script>
+</body>
+</html>

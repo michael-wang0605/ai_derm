@@ -1,0 +1,24 @@
+Class Index,Class Name,Validation Accuracy,Validation Loss,Error Rate
+0,Acne and Rosacea Photos,0.6782,1.3658,0.3218
+1,Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions,0.6541,1.4336,0.3459
+2,Atopic Dermatitis Photos,0.3837,2.1361,0.6163
+3,Bullous Disease Photos,0.0769,3.8318,0.9231
+4,Cellulitis Impetigo and other Bacterial Infections,0.3413,2.4264,0.6587
+5,Eczema Photos,0.0,4.7031,1.0
+6,Exanthems and Drug Eruptions,0.22,2.6129,0.78
+7,Hair Loss Photos Alopecia and other Hair Diseases,0.5682,1.6543,0.4318
+8,Herpes HPV and other STDs Photos,0.4231,1.7216,0.5769
+9,Light Diseases and Disorders of Pigmentation,0.533,1.5005,0.467
+10,Lupus and other Connective Tissue diseases,0.3129,2.1604,0.6871
+11,Melanoma Skin Cancer Nevi and Moles,0.5336,1.489,0.4664
+12,Nail Fungus and other Nail Disease,0.0741,3.9135,0.9259
+13,Poison Ivy Photos and other Contact Dermatitis,0.1786,2.9036,0.8214
+14,Psoriasis pictures Lichen Planus and related diseases,0.3408,2.2277,0.6592
+15,Scabies Lyme Disease and other Infestations and Bites,0.25,2.5907,0.75
+16,Seborrheic Keratoses and other Benign Tumors,0.2905,2.5179,0.7095
+17,Systemic Disease,0.3576,2.0218,0.6424
+18,Tinea Ringworm Candidiasis and other Fungal Infections,0.1492,3.4263,0.8508
+19,Urticaria Hives,0.1186,2.8422,0.8814
+20,Vascular Tumors,0.3814,2.0899,0.6186
+21,Vasculitis Photos,0.1282,3.5591,0.8718
+22,Warts Molluscum and other Viral Infections,0.3,2.5769,0.7
