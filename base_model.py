@@ -62,14 +62,16 @@ def train_model(model, train_loader, test_loader, criterion, optimizer, schedule
         print(f"Train Loss: {running_loss / len(train_loader):.4f} | Accuracy: {correct / total:.4f}")
 
         # Validate every 3 epochs or on final epoch
-        if (epoch + 1) % 3 == 0 or epoch == epochs - 1:
-            val_loss, val_acc = evaluate_model(model, test_loader, criterion, device)
-            print(f"Val Loss: {val_loss:.4f} | Val Acc: {val_acc:.4f}")
-            scheduler.step(val_loss)
-            if val_loss < best_val_loss:
-                best_val_loss = val_loss
-                torch.save(model.state_dict(), "best_model.pth")
-                print("Best model saved!")
+        # Validate every epoch
+        val_loss, val_acc = evaluate_model(model, test_loader, criterion, device)
+        print(f"Val Loss: {val_loss:.4f} | Val Acc: {val_acc:.4f}")
+        scheduler.step(val_loss)
+
+        if val_acc > best_val_acc:
+            best_val_acc = val_acc
+            torch.save(model.state_dict(), "best_model.pth")
+            print("Best model saved!")
+
 
 if __name__ == '__main__':
     data_dir = r"C:\\Users\\mwang\\ai_derm\\dataset_categorized_final_split"
@@ -97,12 +99,15 @@ if __name__ == '__main__':
     train_transform = transforms.Compose([
         transforms.RandomResizedCrop(224),
         transforms.RandomHorizontalFlip(),
-        transforms.RandomVerticalFlip(p=0.2),
-        transforms.RandomRotation(15),
-        transforms.ColorJitter(0.2, 0.2, 0.2, 0.1),
+        transforms.RandomVerticalFlip(p=0.3),
+        transforms.RandomAffine(degrees=20, translate=(0.1, 0.1), scale=(0.9, 1.1), shear=10),
+        transforms.ColorJitter(brightness=0.3, contrast=0.3, saturation=0.3, hue=0.05),
         transforms.ToTensor(),
-        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+        transforms.RandomErasing(p=0.25, scale=(0.02, 0.15), ratio=(0.3, 3.3)),  # Cutout-style
+        transforms.Normalize([0.485, 0.456, 0.406],
+                            [0.229, 0.224, 0.225]),
     ])
+
     test_transform = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.ToTensor(),
@@ -123,5 +128,3 @@ if __name__ == '__main__':
     test_loader = DataLoader(test_dataset, batch_size=64, shuffle=False, num_workers=6, pin_memory=True)
 
     train_model(model, train_loader, test_loader, criterion, optimizer, scheduler, device, epochs=50)
-
-

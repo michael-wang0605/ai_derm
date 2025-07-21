@@ -7,7 +7,7 @@ organized_dataset/
 merged_dataset/
 final_dataset/
 best_model.pth
-
+*.zip
 
 __pycache__/
 *.py[cod]

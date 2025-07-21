@@ -54,11 +54,9 @@
         <input id="image-upload" type="file" accept="image/*" class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-blue-600 file:text-white file:hover:bg-blue-700 cursor-pointer">
         <div id="result" class="mt-6 hidden">
           <h3 class="text-xl font-semibold">Diagnosis</h3>
-          <p><strong>Condition:</strong> <span id="condition">Acne Vulgaris</span></p>
-          <p><strong>Severity:</strong> <span id="severity">Moderate</span></p>
-          <p><strong>Treatment:</strong> <span id="treatment">Topical retinoids, benzoyl peroxide</span></p>
-          <p class="text-red-600"><strong>Warning:</strong> <span id="warning">Avoid combining with oral isotretinoin</span></p>
+          <p><strong>Condition:</strong> <span id="condition"></span></p>
         </div>
+        <div id="error" class="mt-6 hidden text-red-600"></div>
       </div>
     </div>
   </section>
@@ -147,7 +145,7 @@
   </section>
 
   <!-- Contact + CTA Footer -->
-  <footer id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+  <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div>
@@ -165,18 +163,63 @@
         </div>
       </div>
     </div>
-  </footer>
+  </section>
 
   <script>
-    // Mock image upload handling
-    document.getElementById('image-upload').addEventListener('change', function() {
+    // Image upload handling with backend API
+    document.getElementById('image-upload').addEventListener('change', async function(event) {
       const resultDiv = document.getElementById('result');
-      resultDiv.classList.remove('hidden');
-      // Mock data for demonstration
-      document.getElementById('condition').textContent = 'Acne Vulgaris';
-      document.getElementById('severity').textContent = 'Moderate';
-      document.getElementById('treatment').textContent = 'Topical retinoids, benzoyl peroxide';
-      document.getElementById('warning').textContent = 'Avoid combining with oral isotretinoin';
+      const errorDiv = document.getElementById('error');
+      const file = event.target.files[0];
+
+      // Reset UI
+      resultDiv.classList.add('hidden');
+      errorDiv.classList.add('hidden');
+      errorDiv.textContent = '';
+
+      if (!file) {
+        errorDiv.textContent = 'Please select an image file.';
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        errorDiv.textContent = 'Please upload a valid image file (e.g., PNG, JPEG).';
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+
+      // Validate file size (e.g., max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        errorDiv.textContent = 'File size exceeds 5MB. Please upload a smaller image.';
+        errorDiv.classList.remove('hidden');
+        return;
+      }
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append('image', file);
+
+      try {
+        const response = await fetch('http://localhost:5000/analyze', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to analyze image. Please try again.');
+        }
+
+        const data = await response.json();
+
+        // Update UI with backend response
+        document.getElementById('condition').textContent = data.condition || 'Unknown';
+        resultDiv.classList.remove('hidden');
+      } catch (error) {
+        errorDiv.textContent = error.message || 'An error occurred while analyzing the image.';
+        errorDiv.classList.remove('hidden');
+      }
     });
   </script>
 </body>
