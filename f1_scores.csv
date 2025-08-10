@@ -1,0 +1,27 @@
+Metric,Score
+F1 Macro,0.2977337598078453
+F1 Micro,0.37743353569185684
+F1 Weighted,0.38589818525678526
+F1 Class Acne and Rosacea Photos,0.6537585421412301
+F1 Class Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions,0.7133655394524959
+F1 Class Atopic Dermatitis Photos,0.24043715846994534
+F1 Class Bullous Disease Photos,0.06521739130434782
+F1 Class Cellulitis Impetigo and other Bacterial Infections,0.27842227378190254
+F1 Class Eczema Photos,0.0
+F1 Class Exanthems and Drug Eruptions,0.19063545150501673
+F1 Class Hair Loss Photos Alopecia and other Hair Diseases,0.39416058394160586
+F1 Class Herpes HPV and other STDs Photos,0.4
+F1 Class Light Diseases and Disorders of Pigmentation,0.4
+F1 Class Lupus and other Connective Tissue diseases,0.1610738255033557
+F1 Class Melanoma Skin Cancer Nevi and Moles,0.4027027027027027
+F1 Class Nail Fungus and other Nail Disease,0.0
+F1 Class Poison Ivy Photos and other Contact Dermatitis,0.15966386554621848
+F1 Class Psoriasis pictures Lichen Planus and related diseases,0.36151603498542273
+F1 Class Scabies Lyme Disease and other Infestations and Bites,0.2871287128712871
+F1 Class Seborrheic Keratoses and other Benign Tumors,0.375
+F1 Class Systemic Disease,0.20595533498759305
+F1 Class Tinea Ringworm Candidiasis and other Fungal Infections,0.26382978723404255
+F1 Class Urticaria Hives,0.24691358024691357
+F1 Class Vascular Tumors,0.5172413793103449
+F1 Class Vasculitis Photos,0.18867924528301888
+F1 Class Warts Molluscum and other Viral Infections,0.3421750663129973

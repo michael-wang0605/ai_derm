@@ -1,0 +1,100 @@
+Metric,Score
+F1 Macro,0.2977337598078453
+F1 Micro,0.37743353569185684
+F1 Weighted,0.38589818525678526
+Precision Macro,0.3533586624826686
+Recall Macro,0.3127977164525302
+Balanced Accuracy,0.3127977164525302
+Cohen Kappa,0.3364367628134751
+F1 Class Acne and Rosacea Photos,0.6537585421412301
+Precision Class Acne and Rosacea Photos,0.5717131474103586
+Recall Class Acne and Rosacea Photos,0.7632978723404256
+Specificity Class Acne and Rosacea Photos,0.9511474664827286
+F1 Class Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions,0.7133655394524959
+Precision Class Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions,0.8824701195219123
+Recall Class Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions,0.5986486486486486
+Specificity Class Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions,0.9853851870176236
+F1 Class Atopic Dermatitis Photos,0.24043715846994534
+Precision Class Atopic Dermatitis Photos,0.2268041237113402
+Recall Class Atopic Dermatitis Photos,0.2558139534883721
+Specificity Class Atopic Dermatitis Photos,0.9502102234986718
+F1 Class Bullous Disease Photos,0.06521739130434782
+Precision Class Bullous Disease Photos,0.21428571428571427
+Recall Class Bullous Disease Photos,0.038461538461538464
+Specificity Class Bullous Disease Photos,0.9976590763971108
+F1 Class Cellulitis Impetigo and other Bacterial Infections,0.27842227378190254
+Precision Class Cellulitis Impetigo and other Bacterial Infections,0.22727272727272727
+Recall Class Cellulitis Impetigo and other Bacterial Infections,0.3592814371257485
+Specificity Class Cellulitis Impetigo and other Bacterial Infections,0.9557483730998791
+F1 Class Eczema Photos,0.0
+Precision Class Eczema Photos,0.0
+Recall Class Eczema Photos,0.0
+Specificity Class Eczema Photos,0.9974232338393871
+F1 Class Exanthems and Drug Eruptions,0.19063545150501673
+Precision Class Exanthems and Drug Eruptions,0.12723214285714285
+Recall Class Exanthems and Drug Eruptions,0.38
+Specificity Class Exanthems and Drug Eruptions,0.9154960017270035
+F1 Class Hair Loss Photos Alopecia and other Hair Diseases,0.39416058394160586
+Precision Class Hair Loss Photos Alopecia and other Hair Diseases,0.2903225806451613
+Recall Class Hair Loss Photos Alopecia and other Hair Diseases,0.6136363636363636
+Specificity Class Hair Loss Photos Alopecia and other Hair Diseases,0.9718490083152659
+F1 Class Herpes HPV and other STDs Photos,0.4
+Precision Class Herpes HPV and other STDs Photos,0.3253012048192771
+Recall Class Herpes HPV and other STDs Photos,0.5192307692307693
+Specificity Class Herpes HPV and other STDs Photos,0.976032527282311
+F1 Class Light Diseases and Disorders of Pigmentation,0.4
+Precision Class Light Diseases and Disorders of Pigmentation,0.5084745762711864
+Recall Class Light Diseases and Disorders of Pigmentation,0.32967032967032966
+Specificity Class Light Diseases and Disorders of Pigmentation,0.9873775843286455
+F1 Class Lupus and other Connective Tissue diseases,0.1610738255033557
+Precision Class Lupus and other Connective Tissue diseases,0.12
+Recall Class Lupus and other Connective Tissue diseases,0.24489795918367346
+Specificity Class Lupus and other Connective Tissue diseases,0.9429805615530389
+F1 Class Melanoma Skin Cancer Nevi and Moles,0.4027027027027027
+Precision Class Melanoma Skin Cancer Nevi and Moles,0.3059548254620123
+Recall Class Melanoma Skin Cancer Nevi and Moles,0.5889328063241107
+Specificity Class Melanoma Skin Cancer Nevi and Moles,0.9252873563197939
+F1 Class Nail Fungus and other Nail Disease,0.0
+Precision Class Nail Fungus and other Nail Disease,0.0
+Recall Class Nail Fungus and other Nail Disease,0.0
+Specificity Class Nail Fungus and other Nail Disease,0.9991578947347386
+F1 Class Poison Ivy Photos and other Contact Dermatitis,0.15966386554621848
+Precision Class Poison Ivy Photos and other Contact Dermatitis,0.12337662337662338
+Recall Class Poison Ivy Photos and other Contact Dermatitis,0.2261904761904762
+Specificity Class Poison Ivy Photos and other Contact Dermatitis,0.9712337523951178
+F1 Class Psoriasis pictures Lichen Planus and related diseases,0.36151603498542273
+Precision Class Psoriasis pictures Lichen Planus and related diseases,0.5166666666666667
+Recall Class Psoriasis pictures Lichen Planus and related diseases,0.27802690582959644
+Specificity Class Psoriasis pictures Lichen Planus and related diseases,0.9732163472616643
+F1 Class Scabies Lyme Disease and other Infestations and Bites,0.2871287128712871
+Precision Class Scabies Lyme Disease and other Infestations and Bites,0.28431372549019607
+Recall Class Scabies Lyme Disease and other Infestations and Bites,0.29
+Specificity Class Scabies Lyme Disease and other Infestations and Bites,0.9843917040817097
+F1 Class Seborrheic Keratoses and other Benign Tumors,0.375
+Precision Class Seborrheic Keratoses and other Benign Tumors,0.6923076923076923
+Recall Class Seborrheic Keratoses and other Benign Tumors,0.2571428571428571
+Specificity Class Seborrheic Keratoses and other Benign Tumors,0.9947449091285423
+F1 Class Systemic Disease,0.20595533498759305
+Precision Class Systemic Disease,0.16468253968253968
+Recall Class Systemic Disease,0.27483443708609273
+Specificity Class Systemic Disease,0.9059217877074728
+F1 Class Tinea Ringworm Candidiasis and other Fungal Infections,0.26382978723404255
+Precision Class Tinea Ringworm Candidiasis and other Fungal Infections,0.5740740740740741
+Recall Class Tinea Ringworm Candidiasis and other Fungal Infections,0.1712707182320442
+Specificity Class Tinea Ringworm Candidiasis and other Fungal Infections,0.9949956483877394
+F1 Class Urticaria Hives,0.24691358024691357
+Precision Class Urticaria Hives,0.45454545454545453
+Recall Class Urticaria Hives,0.1694915254237288
+Specificity Class Urticaria Hives,0.9974565493832186
+F1 Class Vascular Tumors,0.5172413793103449
+Precision Class Vascular Tumors,0.5844155844155844
+Recall Class Vascular Tumors,0.4639175257731959
+Specificity Class Vascular Tumors,0.993162393160271
+F1 Class Vasculitis Photos,0.18867924528301888
+Precision Class Vasculitis Photos,0.35714285714285715
+Recall Class Vasculitis Photos,0.1282051282051282
+Specificity Class Vasculitis Photos,0.9961693977420809
+F1 Class Warts Molluscum and other Viral Infections,0.3421750663129973
+Precision Class Warts Molluscum and other Viral Infections,0.5758928571428571
+Recall Class Warts Molluscum and other Viral Infections,0.24339622641509434
+Specificity Class Warts Molluscum and other Viral Infections,0.9776312691288495
