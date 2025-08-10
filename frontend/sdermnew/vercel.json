@@ -1,0 +1,56 @@
+{
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/home",
+        "permanent": true
+      },
+      {
+        "source": "/index.html",
+        "destination": "/home",
+        "permanent": true
+      },
+      {
+        "source": "/contact.html",
+        "destination": "/contact",
+        "permanent": true
+      },
+      {
+        "source": "/story.html",
+        "destination": "/story",
+        "permanent": true
+      },
+      {
+        "source": "/scan.html",
+        "destination": "/scan",
+        "permanent": true
+      },
+      {
+        "source": "/team.html",
+        "destination": "/team",
+        "permanent": true
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/home",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/contact",
+        "destination": "/contact.html"
+      },
+      {
+        "source": "/story",
+        "destination": "/story.html"
+      },
+      {
+        "source": "/scan",
+        "destination": "/scan.html"
+      },
+      {
+        "source": "/team",
+        "destination": "/team.html"
+      }
+    ]
+  }

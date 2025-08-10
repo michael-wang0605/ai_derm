@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story - SDERM AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .nav-scrolled {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    .story-section {
+      border-left: 3px solid #3b82f6;
+      padding-left: 1.5rem;
+      margin-left: 0.75rem;
+    }
+    .story-section:nth-child(even) {
+      border-left-color: #8b5cf6;
+    }
+    .story-section:nth-child(3n) {
+      border-left-color: #ec4899;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-900 bg-white">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-scrolled py-4 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <div class="text-white font-bold text-xl">
+        <a href="index.html" class="hover:text-blue-300 transition">SDERM AI</a>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html" class="text-white hover:text-blue-300 transition font-medium">Home</a>
+        <a href="scan.html" class="text-white hover:text-blue-300 transition font-medium">Scan My Skin</a>
+        <a href="story.html" class="text-blue-300 font-medium">Our Story</a>
+        <a href="team.html" class="text-white hover:text-blue-300 transition font-medium">Our Team</a>
+        <a href="contact.html" class="text-white hover:text-blue-300 transition font-medium">Contact</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+      <div class="flex flex-col space-y-3 px-4">
+        <a href="index.html" class="text-white hover:text-blue-300 transition font-medium">Home</a>
+        <a href="scan.html" class="text-white hover:text-blue-300 transition font-medium">Scan My Skin</a>
+        <a href="story.html" class="text-blue-300 font-medium">Our Story</a>
+        <a href="team.html" class="text-white hover:text-blue-300 transition font-medium">Our Team</a>
+        <a href="contact.html" class="text-white hover:text-blue-300 transition font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Simple Header -->
+  <div class="pt-24 pb-8 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-3">How We Started SDERM AI</h1>
+      <p class="text-lg text-gray-600">Three high school students who wanted to make an impact.</p>
+    </div>
+  </div>
+
+  <!-- Main Story Content -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- ADD PHOTO HERE: Team founders working together -->
+    
+
+    <div class="space-y-12">
+      
+      <!-- The Problem -->
+      <div class="story-section">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">The Problem That Inspired This</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          In 2023, both Srithansh and Michael were dealing with persistent skin issues. They had to wait 2-3 weeks for an appointment, pay expensive consultation fees, and sometimes get conflicting diagnoses from different doctors.
+        </p>
+        <p class="text-lg text-gray-700">
+          They realized this problem did not only apply to them but millions of people worldwide, particularly those who may come from more underserved communities. Dermatologists and doctors are extremely helpful but as an additional tool, SDERM AI can help.
+        </p>
+      </div>
+
+      <!-- The Idea Forms -->
+      <div class="story-section">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">When the Idea Clicked</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          Srithansh and Michael, both passionate AI enthusiasts, had been developing machine learning and computer vision projects since middle school, building a strong foundation in advanced technologies. Barghavan, also a skilled programmer, contributed complementary computer science expertise. This made the team capable of tackling complex challenges.
+        </p>
+      </div>
+
+      <!-- ADD PHOTO HERE: Early research phase -->
+      
+
+      <!-- The Hard Work Begins -->
+      <div class="story-section">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">Months of Trial and Error</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          Building an accurate skin condition classifier was much harder than we initially thought. We spent months cleaning datasets, dealing with biased training data, and trying different model architectures.
+        </p>
+        <p class="text-lg text-gray-700">
+          We reached out to professors and doctors, asking for feedback and validation. A few became valuable advisors, such as Professor Kai Shu from Emory University and Dr. Anurag Mairal from Stanford University. 
+        </p>
+      </div>
+
+      <!-- The Competition -->
+      <div class="story-section">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">Testing Our Vision</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          In August 2024, we officially founded SDERM AI.
+        </p>
+        <p class="text-lg text-gray-700">
+          Making it to the top 350 out of thousands of applicants in the World's Most Prestigious Entrepreneurship Competition for High School Students was a huge validation. "We believe that getting top 350 internationally in this competition meant that AI can really help out!" says Srithansh.
+        </p>
+      </div>
+
+      <!-- ADD PHOTO HERE: Competition or breakthrough moment -->
+      
+
+      <!-- The Breakthrough -->
+      <div class="story-section">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">When It Finally Worked</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          By late 2024, our model started consistently hitting over 92% accuracy on standard dermatology datasets. More importantly, we'd solved the bias problem by training on diverse, representative data. It was accurate to up to 15+ different skin types. 
+        </p>
+        <p class="text-lg text-gray-700 mb-4">
+          The AI could now accurately detect several conditions across different skin tones and demographics.
+        </p>
+      </div>
+
+      <!-- Where We Are Now -->
+      <div class="story-section">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">What We're Working on Now</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          We're building a tool that provides preliminary skin condition assessments from a phone—especially valuable for those without easy access to dermatological care. We're also working to integrate this with dermatologists’ workflows, offering it as a support tool to enhance their accuracy. While professional diagnosis is essential, our goal is to help people take the first step toward getting the care they need.
+        </p>
+      </div>
+
+      <!-- ADD PHOTO HERE: Current team working -->
+      
+
+    </div>
+  </div>
+
+  <!-- What Drives Us Section -->
+  
+
+
+  <!-- Footer -->
+  <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+          <p>Email: <a href="mailto:sderm.ai.team@gmail.com" class="underline hover:text-blue-400 transition">sderm.ai.team@gmail.com</a></p>
+          <div class="mt-4 flex gap-4">
+            <a href="https://www.linkedin.com/company/sderm-dermatology/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition">
+                LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="text-center sm:text-right">
+            <h3 class="text-xl font-semibold mb-4">Legal</h3>
+            <p><a href="#" id="privacy-link" class="underline hover:text-blue-400 transition cursor-pointer">Privacy Policy</a></p>
+            <p><a href="#" id="terms-link" class="underline hover:text-blue-400 transition cursor-pointer">Terms of Service</a></p>
+            <p class="mt-2">© 2025 SDERM AI. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacy-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-[60] flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b">
+        <h2 class="text-2xl font-bold text-gray-900">Privacy Policy</h2>
+        <button id="privacy-close" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+      </div>
+      <div class="p-6 overflow-y-auto max-h-[70vh]">
+        <div class="prose max-w-none">
+          <h3 class="text-lg font-semibold mb-3">1. What We Know About You</h3>
+          <p class="mb-4">When you use SDERM AI:</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>If you email us, we'll have your email address to write back</li>
+          </ul>
+
+
+          <h3 class="text-lg font-semibold mb-3">3. Everything is Anonymous</h3>
+          <p class="mb-4">Your photos and info stay private to you. This is just a public model you are using.</p>
+
+          <h3 class="text-lg font-semibold mb-3">4. Important Reminder</h3>
+          <p class="mb-4">This platform is very helpful and often accurate, but it is not a real doctor. Confirm with a medical professional for any diagnosis or treatment. While our system performs at a high level, small errors are still possible that only a trained medical professional can detect. </p>
+
+          <h3 class="text-lg font-semibold mb-3">5. Questions?</h3>
+          <p class="mb-4">Email us anytime at: <a href="mailto:sderm.ai.team@gmail.com" class="text-blue-600 underline">sderm.ai.team@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simplified Terms of Service Modal -->
+  <div id="terms-modal" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop hidden z-[60] flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b">
+        <h2 class="text-2xl font-bold text-gray-900">Terms of Service</h2>
+        <button id="terms-close" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+      </div>
+      <div class="p-6 overflow-y-auto max-h-[70vh]">
+        <div class="prose max-w-none">
+          <h3 class="text-lg font-semibold mb-3">1. Be Cool</h3>
+          <p class="mb-4">By using our platform, you promise to:</p>
+          <ul class="list-disc pl-6 mb-4">
+            <li>Only upload photos you have the right to share</li>
+            <li>Not attempt to damage, hack, or disrupt our website or AI model</li>
+            <li>Use the platform the way it's meant to be used</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mb-3">2. Not a Doctor</h3>
+          <p class="mb-4">This platform provides highly accurate AI-powered skin condition assessments, designed to support medical decision-making. However, it is not a replacement for a licensed healthcare professional.</p>
+
+          <h3 class="text-lg font-semibold mb-3">3. Our Stuff is Ours</h3>
+          <p class="mb-4">All the content, design, and technology behind this platform belong to us. Please don't copy or reuse anything without our permission.</p>
+
+          <h3 class="text-lg font-semibold mb-3">4. We Can Change Things</h3>
+          <p class="mb-4">Sometimes we may update these rules or change how the platform works. If we make any big changes, we'll let you know.</p>
+
+          <h3 class="text-lg font-semibold mb-3">5. Got Questions?</h3>
+          <p class="mb-4">Email us at: <a href="mailto:sderm.ai.team@gmail.com" class="text-blue-600 underline">sderm.ai.team@gmail.com</a> if anything is unclear!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      navbar.classList.add('nav-scrolled');
+    });
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Modal functionality
+    const privacyLink = document.getElementById('privacy-link');
+    const termsLink = document.getElementById('terms-link');
+    const privacyModal = document.getElementById('privacy-modal');
+    const termsModal = document.getElementById('terms-modal');
+    const privacyClose = document.getElementById('privacy-close');
+    const termsClose = document.getElementById('terms-close');
+
+    // Open Privacy Policy modal
+    privacyLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      privacyModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Open Terms of Service modal
+    termsLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      termsModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close Privacy Policy modal
+    privacyClose.addEventListener('click', function() {
+      privacyModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close Terms of Service modal
+    termsClose.addEventListener('click', function() {
+      termsModal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close modals when clicking outside
+    privacyModal.addEventListener('click', function(e) {
+      if (e.target === privacyModal) {
+        privacyModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    termsModal.addEventListener('click', function(e) {
+      if (e.target === termsModal) {
+        termsModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Close modals with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (!privacyModal.classList.contains('hidden')) {
+          privacyModal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+        if (!termsModal.classList.contains('hidden')) {
+          termsModal.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
