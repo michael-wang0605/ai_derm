@@ -80,5 +80,3 @@ ai_derm/
 - **Development**: Michael Wang
 
 ---
-
-**Note**: If you want to enhance this README with example screenshots of the web interface and predictions, let me know, and I can guide you on adding them to make the project stand out on GitHub!
